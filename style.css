@@ -1,0 +1,234 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #09f;
+  background-image: linear-gradient(bottom, #09f, #45d1ff);
+}
+
+.navbar {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 10;
+}
+
+.navbar-option {
+  display: block;
+  padding: 10px;
+  margin-bottom: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  font-family: sans-serif;
+  font-size: 13px;
+  color: #333;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.navbar-option:hover {
+  background: rgba(255, 255, 255, 0.75);
+}
+
+.bubble-toggle {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 10px;
+  background: rgba(255,255,255,0.5);
+  font-family: sans-serif;
+  font-size: 13px;
+  color: #333;
+  text-decoration: none;
+  z-index: 10; /* Ensure the toggle appears above the bubbles */
+}
+
+.bubble-toggle:hover {
+  background: rgba(255,255,255,0.75);
+}
+
+.bubbles {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.bubble-container {
+  position: absolute;
+  bottom: 0;
+  will-change: transform;
+  animation: bubblerise 4s infinite ease-in;
+  opacity: 0;
+}
+
+.bubble {
+  width: 60px; /* Make the bubbles 4 times larger */
+  height: 60px; /* Make the bubbles 4 times larger */
+  margin: 0 auto;
+  border-radius: 50%; /* Make it round */
+  background: radial-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.5)); /* Add gradient background */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3); /* Add shadow */
+  animation: bubblefloat 6s infinite alternate; /* Add floating animation */
+}
+
+@keyframes bubblerise {
+  0% {
+    bottom: 0;
+    opacity: 0;
+  }
+  5% {
+    bottom: 0;
+    opacity: 1;
+  }
+  99% {
+    opacity: 1;
+  }
+  100% {
+    bottom: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes bubblefloat {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.circles {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: auto; /* Change width to auto */
+  height: auto; /* Change height to auto */
+  margin: 0; /* Remove margin */
+  padding: 0; /* Remove padding */
+  z-index: 20; /* Ensure circles are above bubbles */
+}
+
+.circle1,
+.circle2,
+.circle3,
+.circle4,
+.circle5 {
+  width: 200px; /* Set the width of each circle */
+  height: 200px; /* Set the height of each circle */
+  margin: 0 20px; /* Adjust spacing */
+  border-radius: 50%; /* Make it round */
+  background: radial-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.5)); /* Add gradient background */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Add shadow */
+  border: 5px solid rgba(255,255,255,0.7); /* Add border */
+  animation: circlefloat 8s infinite alternate; /* Add floating animation */
+  cursor: pointer; /* Add pointer cursor */
+}
+
+.circle1 {
+  animation: circlefloat1 8s infinite alternate; /* Add floating animation */
+}
+
+.circle2 {
+  animation: circlefloat2 8s infinite alternate; /* Add floating animation */
+}
+
+.circle3 {
+  animation: circlefloat3 8s infinite alternate; /* Add floating animation */
+}
+
+.circle4 {
+  animation: circlefloat4 8s infinite alternate; /* Add floating animation */
+}
+
+.circle5 {
+  animation: circlefloat5 8s infinite alternate; /* Add floating animation */
+}
+
+@keyframes circlefloat1 {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+  100% {
+    transform: translateY(+7px);
+  }
+}
+
+@keyframes circlefloat2 {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(+10px);
+  }
+  100% {
+    transform: translateY(-13px);
+  }
+}
+
+@keyframes circlefloat3 {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-16px);
+  }
+  100% {
+    transform: translateY(+5px);
+  }
+}
+
+@keyframes circlefloat4 {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(+8px);
+  }
+  100% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes circlefloat5 {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+  100% {
+    transform: translateY(+10px);
+  }
+}
+
+@keyframes circleDisappear {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+
+/* Add animation for disappearing circles */
+.circle-disappear {
+  animation: circleDisappear 0.5s ease-out forwards;
+}

@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+
+:root {
+  --font: "Open Sans", sans-serif;
+  --text: hsl(225, 13%, 75%);
+  --bg: hsl(0, 0%, 97%);
+  --bg-dark: hsl(0, 0%, 92%);
+  --border: hsl(0, 0%, 16%);
+  --main: hsl(223, 49%, 30%);
+  --highlight: hsl(360, 95%, 60%);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  width: 100%;
+  font-family: var(--font);
+  color: var(--text);
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 200" transform="rotate(180)" width="500" height="200"><path d="M 100 220 l 150 -200" fill="none" stroke="%23fbd346" stroke-width="30" stroke-linecap="round" stroke-dasharray="70" /><path d="M 250 220 l 75 -100" fill="none" stroke="%232ddffe" stroke-width="50" stroke-linecap="round" /><path d="M 350 220 l 112.5 -150" fill="none" stroke="%23fa327f" stroke-width="35" stroke-linecap="round" /></svg>'),
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 200" width="500" height="200"><path d="M 100 220 l 150 -200" fill="none" stroke="%23fa327f" stroke-width="30" stroke-linecap="round" /><path d="M 250 220 l 75 -100" fill="none" stroke="%2345fcd7" stroke-width="50" stroke-linecap="round" /><path d="M 350 220 l 112.5 -150" fill="none" stroke="%232ddffe" stroke-width="35" stroke-linecap="round" /></svg>'),
+    var(--bg);
+  background-repeat: no-repeat;
+  background-position: 100% 0, 0 100%, 0;
+  background-size: 500px, 300px, 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main.piano {
+  background: var(--main);
+  max-width: 600px;
+  max-height: calc(600px * 4 / 7);
+  width: 90vw;
+  height: calc(90vw * 4 / 7);
+  border: 1.5rem solid var(--border);
+  border-radius: 25px;
+
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+button.piano__key {
+  flex-grow: 1;
+  height: 45%;
+  border: none;
+  background: var(--bg);
+
+  font-family: inherit;
+  color: inherit;
+  text-transform: uppercase;
+  font-size: 3vw;
+  transition: all 0.25s ease-out;
+  position: relative;
+}
+
+button.piano__key + button.piano__key {
+  border-left: 2px solid var(--bg-dark);
+}
+button.piano__key:hover {
+  background: var(--bg-dark);
+}
+button.piano__key.active {
+  background: var(--highlight);
+  color: var(--bg);
+}
+button.piano__key.active:before {
+  animation: playKey 1s ease-out forwards;
+}
+
+button.piano__key:before {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  height: 150%;
+  width: 80%;
+  background: var(--highlight);
+  transform: translate(-50%, 0) scaleY(0);
+  transform-origin: 50% 100%;
+}
+
+@keyframes playKey {
+  to {
+    transform: translate(-50%, 0) scaleY(1);
+  }
+}
+
+@media (min-width: 700px) {
+  button.piano__key {
+    font-size: 1.5rem;
+  }
+}
